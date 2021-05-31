@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -21,6 +23,7 @@ public class Category implements IEntity {
     private Integer id;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Category parent;
 
     @NotEmpty

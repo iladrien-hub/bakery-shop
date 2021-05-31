@@ -24,6 +24,12 @@ public class OrderService {
     @Autowired
     private CartItemRepository cartItemRepository;
 
+    public OrderService(OrderRepository orderRepository, CartRepository cartRepository, CartItemRepository cartItemRepository) {
+        this.orderRepository = orderRepository;
+        this.cartRepository = cartRepository;
+        this.cartItemRepository = cartItemRepository;
+    }
+
     public Cart getCart(String sessionPushId) {
         Cart cart = cartRepository.findBySessionPushIdAndOrderIsNull(sessionPushId);
         if (cart == null) {
