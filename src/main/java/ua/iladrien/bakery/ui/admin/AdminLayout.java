@@ -5,6 +5,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -46,13 +47,18 @@ public class AdminLayout extends AppLayout {
         H1 h1 = new H1("MuchSweeter | Admin");
         h1.addClassName("logo");
 
-        Button to_shop = new Button("TO SHOP");
+        Button to_shop = new Button("To Shop");
+        to_shop.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         to_shop.addClickListener(evt -> UI.getCurrent().navigate("shop"));
+        Button logOut = new Button("LogOut");
+        logOut.addThemeVariants(ButtonVariant.LUMO_ERROR);
+        logOut.addClickListener(evt -> UI.getCurrent().navigate("/logout"));
+
 
         Div div = new Div();
         div.addClassName("spacer");
 
-        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), h1, div, to_shop);
+        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), h1, div, to_shop, logOut);
         header.addClassName("header");
         header.setWidthFull();
 
